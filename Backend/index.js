@@ -8,6 +8,7 @@ import { ApolloServerPluginDrainHttpServer } from '@apollo/server/plugin/drainHt
 
 import mergedResolver from "./resolver/index.js";
 import mergedTypeDefs from "./typeDefs/index.js";
+import { connectDb } from './db/connectDB.js';
 
 const app = express()
 const httpServer = http.createServer(app);
@@ -36,4 +37,6 @@ app.use(
 await new Promise((resolve) =>
   httpServer.listen({ port: process.env.PORT }, resolve),
 );
+
+await connectDb()
 console.log(`🚀 Server ready at http://localhost:${process.env.PORT}/`);
