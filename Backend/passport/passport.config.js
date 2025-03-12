@@ -24,7 +24,7 @@ export const configurePassport = async () => {
   passport.use(
     new GraphQLLocalStrategy(async (username, password, done) => {
       try {
-        const user = User.findOne(username);
+        const user = User.findOne({username});
         if (!user) {
           throw new Error("Invalid username or password");
         }
