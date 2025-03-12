@@ -10,6 +10,7 @@ import { buildContext } from 'graphql-passport'
 import passport from 'passport';
 import session from 'express-session';
 import ConnectMongoDBSession from 'connect-mongodb-session';
+import { configurePassport } from './passport/passport.config.js';
 
 import mergedResolver from "./resolver/index.js";
 import mergedTypeDefs from "./typeDefs/index.js";
@@ -17,7 +18,9 @@ import { connectDb } from './db/connectDB.js';
 
 const app = express()
 const httpServer = http.createServer(app);
+
 dotenv.config();
+configurePassport()
 
 const MongodbStore = ConnectMongoDBSession(session)
 
