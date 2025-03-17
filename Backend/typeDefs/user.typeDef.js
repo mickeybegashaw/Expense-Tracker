@@ -16,8 +16,8 @@ const userTypeDef = `
 
  type Mutation{
     signUp(input : signUpInput) :User
-    logIn(input : LoginInput) :User
-    logOut :LogOutResponse
+    login(input : LoginInput) :User
+    logout :LogOutResponse
  }
 
  input signUpInput{

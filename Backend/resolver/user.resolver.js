@@ -1,6 +1,5 @@
-import { users } from "../dummyData/data.js";
 import User from "../models/user.model.js";
-
+import bcrypt from 'bcryptjs'
 const userResolver = {
   Mutation: {
     signUp: async (_, { input }, context) => {
@@ -49,7 +48,7 @@ const userResolver = {
         console.error(error);
       }
     },
-    logout: async (_, _, context) => {
+    logout: async (_, context) => {
       try {
         await context.logout();
         req.session.destroy((err) => {
@@ -63,7 +62,7 @@ const userResolver = {
     },
   },
   Query: {
-    authUser: async (_, _, context) => {
+    authUser: async (_, context) => {
       try {
         const user = await context.getUser();
         return user;
