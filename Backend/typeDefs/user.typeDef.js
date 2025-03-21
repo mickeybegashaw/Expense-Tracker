@@ -2,7 +2,6 @@ const userTypeDef = `
  type User {
     _id :ID!
     username : String!
-    email :String!
     name :String!
     password :String!
     profilePicture :String
@@ -22,7 +21,7 @@ const userTypeDef = `
 
  input signUpInput{
     username :String!
-    email : String!
+    name : String!
     password :String!
     gender :String
  }
